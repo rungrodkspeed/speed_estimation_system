@@ -22,11 +22,11 @@ class TrtEngine:
         self.rf = 32
         self.ppc = 21
         self.engine = self.load_engine(path)
+        self.context = self.engine.create_execution_context()
         
         self.host_output = None
         
     def __call__(self, images: Union[np.ndarray, List[np.ndarray]]) -> np.ndarray:
-        self.context = self.engine.create_execution_context()
         assert not (self.context is None), "Context is None."
         
         if isinstance(images, list):
@@ -45,7 +45,6 @@ class TrtEngine:
         self.context.execute_v2(bindings=self.buffer)
         
         cuda.memcpy_dtoh_async(self.host_output, self.buffer[-1])
-        self.clear()
         
         return self.host_output
         
