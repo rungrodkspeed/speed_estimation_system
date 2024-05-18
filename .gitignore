@@ -1,0 +1,6 @@
+__pycache__
+
+*.onnx
+*.plan
+*.mp4
+*.jpg
