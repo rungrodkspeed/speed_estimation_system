@@ -1,1 +1,1 @@
-# Speed Estimation System by Zero-shot YOLOv8 Dectection.
+# Speed Estimation System: Zero-shots YOLOv8 Dectection.
