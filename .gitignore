@@ -6,5 +6,7 @@ test_*.py
 *.plan
 *.mp4
 *.jpg
+*.bin
+*.xml
 
 plan.txt
