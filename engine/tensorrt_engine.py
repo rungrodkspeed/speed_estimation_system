@@ -26,7 +26,7 @@ class TrtEngine:
         
         self.host_output = None
         
-    def __call__(self, images: Union[np.ndarray, List[np.ndarray]]) -> np.ndarray:
+    def __call__(self, images: Union[List[np.ndarray], np.ndarray]) -> np.ndarray:
         assert not (self.context is None), "Context is None."
         
         if isinstance(images, list):
@@ -48,15 +48,14 @@ class TrtEngine:
         
         return self.host_output
         
-    
-    def load_engine(self, path):
+    def load_engine(self, path: str):
         
         with open(path, "rb") as f, trt.Runtime(self.LOGGER) as runtime:
             engine = runtime.deserialize_cuda_engine(f.read())
             
         return engine
         
-    def binding_data(self, data):
+    def binding_data(self, data: Union[List[np.ndarray], np.ndarray]):
         
         if isinstance(data, list):
             batch = len(data)
