@@ -87,7 +87,7 @@ class ImageProcessor:
                 
         assert (self.shape is not None) and (self.preprocess_shape is not None), "Maybe must preprocess before using postprocess" 
         
-        custom_nms = partial(self.non_max_suppression, conf_thres=0.2, classes=[2], max_nms=100, max_wh=5040)
+        custom_nms = partial(self.non_max_suppression, conf_thres=0.1, classes=[2,3,5,7], max_nms=100, max_wh=5040)
         return self.pipe(preds, custom_nms, self.impl_post)
     
     def impl_post(self, preds: List[np.ndarray]) -> List[np.ndarray]:

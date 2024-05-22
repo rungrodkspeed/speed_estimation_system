@@ -8,5 +8,6 @@ test_*.py
 *.jpg
 *.bin
 *.xml
+*.avi
 
 plan.txt
